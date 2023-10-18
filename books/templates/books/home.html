@@ -18,6 +18,15 @@
                     <td>{{ book.title }}</td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.suggested_by }}</td>
+                    <td>
+                        <form
+                            action="{% url 'delete_book' book.id %}"
+                            method="POST"
+                        >
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
