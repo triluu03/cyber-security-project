@@ -1,0 +1,13 @@
+{% block content %}
+<h2>Create User</h2>
+<form method="post" action="{% url 'create_user' %}">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" />
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" />
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" />
+    <button type="submit">Create</button>
+</form>
+{% endblock %}

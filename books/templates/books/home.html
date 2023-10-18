@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Books</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Suggested By</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.suggested_by }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+    <form action="logout/" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout" />
+    </form>
+    <a href="{% url 'create_book' %}">Suggest new book</a>
+    <a href="{% url 'users' %}">Users</a>
+</html>
