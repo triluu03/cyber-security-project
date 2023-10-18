@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger(__name__)
 """
 
-# Fix for flaw 5: Cross Site Scripting: CSRF protection
+# Fix for Flaw 4: Cross Site Scripting: CSRF protection
 """
 csrf_protect
 """
@@ -24,20 +24,20 @@ def home(request):
     books = Book.objects.all()
     return render(request, 'books/home.html', {'books': books})
 
-# Fix for flaw 5: Cross Site Scripting: CSRF protection
+# Fix for Flaw 4: Cross Site Scripting: CSRF protection
 """
 csrf_protect
 """
 @login_required(login_url='/login/')
 def users_view(request):
     users = User.objects.all()
-    # Fix for Flaw 1: Cryptographic Failures: displaying passwords
+    # Fix for Flaw 3: Sensitive Data Exposure: displaying passwords
     """
     users = User.objects.all().values("username", "email")
     """
     return render(request, 'books/users.html', {'users': users})
 
-# Fix for flaw 5: Cross Site Scripting: CSRF protection
+# Fix for Flaw 4: Cross Site Scripting: CSRF protection
 """
 csrf_protect
 """
@@ -49,7 +49,7 @@ def create_book(request):
             form.save()
             return redirect('home')
         else:
-            # Fix for Flaw 4: Security Logging and Monitoring Failures: logging information about errors
+            # Fix for Flaw 5: Inefficient Logging and Monitoring: logging information about errors
             """
             logger.error("Something wrong happened! The form is not valid!")
             """
@@ -58,7 +58,7 @@ def create_book(request):
         form = CreateBookForm()
     return render(request, 'books/create_book.html', {'form': form})
 
-# Fix for flaw 5: Cross Site Scripting: CSRF protection
+# Fix for Flaw 4: Cross Site Scripting: CSRF protection
 """
 csrf_protect
 """
@@ -71,7 +71,7 @@ def create_user(request):
             user = User.objects.get(username=username)
             raise ValidationError('Username already exists')
         except:
-            # Fix for Flaw 2: Identification and Authentication Failures: weak password
+            # Fix for Flaw 2: Broken Authentication: weak password
             """
             if len(password) < 8:
                 raise ValidationError('Password must be at least 8 characters long')
@@ -88,7 +88,7 @@ def create_user(request):
     else:
         return render(request, 'books/create_user.html')
 
-# Fix for flaw 5: Cross Site Scripting: CSRF protection
+# Fix for Flaw 4: Cross Site Scripting: CSRF protection
 """
 csrf_protect
 """
@@ -102,7 +102,7 @@ def delete_book(request, book_id):
     connection.close()
     return redirect('home')
 
-# Fix for Flaw 3: Injection: replace the above delete_book view with the following one
+# Fix for Flaw 1: Injection: replace the above delete_book view with the following one
 """
 def delete_book(request, book_id):
     book_to_delete = get_object_or_404(Book, id=book_id)
