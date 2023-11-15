@@ -96,7 +96,7 @@ csrf_protect
 def delete_book(request, book_id):
     connection = sqlite3.connect(Path(__file__).resolve().parent.parent / 'db.sqlite3')
     cursor = connection.cursor()
-    query = f"DELETE FROM books_book WHERE id = {book_id};"
+    query = "DELETE FROM books_book WHERE id = %s;" % (book_id, )
     cursor.execute(query)
     connection.commit()
     connection.close()
