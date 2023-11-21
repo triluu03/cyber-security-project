@@ -33,7 +33,7 @@ The project is built as a simple book sharing platform where logged users can su
 ### FLAW 2: Broken Authentication (or Identification and Authentication Failures)
 
 -   LINK:
-    -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L79
+    -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L87
 -   **Description**: A first-time user is required to create an account and log in with the newly created credentials to start using the application. However, when an user creates a new account, the application still allows weak and simple passwords, such as "12345" or "password", to be used. This makes the user's account with such a simple password easy to be guessed and compromised by malicious hackers.
 -   **How to fix**: In the function that handles creating new users, we implement some new conditions on the passwords given by new users to prevent weak passwords creation. For example, such conditions are minimum length, uppercase and lowercase characters' existence, or digits existence. If the passwords provided by new users do not meet the above requirements, an error will be raised and the new user will not be created. This forces new users to create strong enough passwords for their account. Morever, we, as developers, can easily enforce new requirements for users' passwords by implementing more conditions as above.
 -   FIX LINK:
