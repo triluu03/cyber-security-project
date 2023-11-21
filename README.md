@@ -84,6 +84,7 @@ The project is built as a simple book sharing platform where logged users can su
 -   **Description**: The application is vulnerable to attacks targeting users' browsers. More specifically, malicious attackers can utilize the users' cookies to send a request, so the server thinks that it is receiving requests from the users.
 -   **How to fix**: Django framework provides a straightforward way to resolve this issue. Developers just need to add the decorator "csrf_protect" above the views that need protection against cross site request forgery.
 -   FIX LINK:
+    -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L7       
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L19
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L29
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L50
