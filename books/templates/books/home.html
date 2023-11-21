@@ -20,12 +20,20 @@
                     <td>{{ book.suggested_by }}</td>
                     <td>
                         <form
-                            action="{% url 'delete_book' book.id %}"
+                            action="{% url 'delete_book' book.author %}"
                             method="POST"
                         >
                             {% csrf_token %}
                             <button type="submit">Delete</button>
                         </form>
+                        <!-- Fix to Flaw 4: Insecure Design: Replace the above form with the following form
+                        <form
+                            action="{% url 'delete_book' book.id %}"
+                            method="POST"
+                        >
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form> -->
                     </td>
                 </tr>
                 {% endfor %}

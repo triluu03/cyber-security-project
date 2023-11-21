@@ -16,6 +16,7 @@
                 {% for user in users %}
                 <tr>
                     <td>{{ user.username }}</td>
+                    <!-- Fix to Flaw 3: Sensitive Data Exposure: Remove the following line -->
                     <td>{{ user.password }}</td>
                     <td>{{ user.email }}</td>
                 </tr>
