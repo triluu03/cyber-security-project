@@ -58,14 +58,14 @@ The project is built as a simple book sharing platform where logged users can su
 
 -   LINK:
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L117
-    -   https://github.com/triluu03/cyber-security-project/blob/main/books/templates/books/home.html#L23
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/urls.py#L9
+    -   https://github.com/triluu03/cyber-security-project/blob/main/books/templates/books/home.html#L23
 -   **Description**: In the function that handles deleting books requests, the query uses "author" to find the targeted book and delete it. However, this design is insecure since different books with the same author will get deleted even though the user just aims to delete one of them.
 -   **How to fix**: The database query should use "id" to find the targeted book to delete instead of "author" of the book. First, replace the view function that handles deleting books requests with the new one that uses "id" instead of "author" field. Second, replace the "url" that receives POST request to delete the book with the new one that receives "id" of the book instead of "author" of the book. Finally, modify the HTML template to send book's "id" in the request instead of book's "author".
 -   FIX LINK:
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/views.py#L134
-    -   https://github.com/triluu03/cyber-security-project/blob/main/books/templates/books/home.html#L29
     -   https://github.com/triluu03/cyber-security-project/blob/main/books/urls.py#L10
+    -   https://github.com/triluu03/cyber-security-project/blob/main/books/templates/books/home.html#L29
 
 ### FLAW 5: Inefficient Logging and Monitoring (or Security Logging and Monitoring Failures)
 
